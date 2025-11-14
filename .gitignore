@@ -137,3 +137,27 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+
+# ================================= 
+
+# Archivos de configuración de Mac
+.DS_Store
+
+# Carpeta de dependencias de Node.js
+node_modules/
+
+# Archivos de log generados por el sistema
+*.log
+
+# Variables de entorno
+.env
+
+# Archivos comprimidos
+*.zip
+
+# Ignorar solo JSON locales
+*.local.json
+
+# Archivos de caché de Python
+__pycache__/
