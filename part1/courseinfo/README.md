@@ -1,16 +1,52 @@
-# React + Vite
+# Courseinfo — Full Stack Open (Part 1)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto forma parte del curso **Full Stack Open** de la Universidad de Helsinki.  
+En esta sección se introduce el trabajo con **React**, el manejo de **componentes**, **props** y la estructura básica de una aplicación creada con JavaScript moderno.
 
-Currently, two official plugins are available:
+## Contenido del proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El objetivo principal es crear una aplicación simple que muestra información de un curso y sus partes.  
+Entre los conceptos trabajados se encuentran:
 
-## React Compiler
+- Creación de componentes React
+- Uso de props para pasar información
+- Renderización de listas y elementos
+- Separación de responsabilidades dentro de los componentes
+- Comprensión de cómo React actualiza la interfaz
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Cómo ejecutar el proyecto
 
-## Expanding the ESLint configuration
+1. Clonar este repositorio:
+   ```bash
+   git clone <url-del-repo>
+   ```
+2. Instalar dependencias:
+   ```bash
+   npm install
+   ```
+3. Ejecutar en modo desarrollo:
+   ```bash
+   npm run dev
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+La aplicación estará disponible en el navegador en la dirección que indique Vite (por defecto http://localhost:5173/
+).
+
+## Aprendizajes clave
+
+Cómo estructurar una app React desde cero.
+
+Comprender la relación entre componentes padre e hijo.
+
+Uso de variables y funciones dentro de componentes.
+
+Buenas prácticas para dividir la UI en partes reutilizables.
+
+## Material del curso
+
+Este proyecto corresponde a la Part 1 — Introduction to React.
+Más información disponible en: https://fullstackopen.com/
+
+```
+
+```
