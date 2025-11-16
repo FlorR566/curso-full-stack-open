@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="/part0/form template/style.css"
+		/>
+		<title>Form test page</title>
+	</head>
+	<body>
+		<p>** FORM TEMPLATE **</p>
+		<form action="/my-handling-form-page" method="post">
+			<!-- 'action' indica adónde se envían los datos cargados del formualario -->
+			<!-- 'method' indica qué método HTTP usa el navegador para enviar el formulario, valores posibles: get y post-->
+			<fieldset>
+				<legend>Tamaño del zumo de fruta</legend>
+				<p>
+					<input type="radio" name="size" id="size_1" value="small" />
+					<label for="size_1">Pequeño</label>
+				</p>
+				<p>
+					<input type="radio" name="size" id="size_2" value="medium" />
+					<label for="size_2">Mediano</label>
+				</p>
+				<p>
+					<input type="radio" name="size" id="size_3" value="large" />
+					<label for="size_3">Grande</label>
+				</p>
+			</fieldset>
+		</form>
+	</body>
+</html>
