@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="/part0/form template/style.css"
+		/>
+		<title>Form test page</title>
+	</head>
+	<body>
+		<p>** FORM TEMPLATE **</p>
+		<form action="/my-handling-form-page" method="post">
+			<!-- 'action' indica adónde se envían los datos cargados del formualario -->
+			<!-- 'method' indica qué método HTTP usa el navegador para enviar el formulario, valores posibles: get y post-->
+			<form>
+				<p>
+					<input
+						type="checkbox"
+						id="taste_1"
+						name="taste_cherry"
+						value="cherry"
+					/>
+					<label for="taste_1">Me gustan las cerezas</label>
+				</p>
+				<p>
+					<input
+						type="checkbox"
+						id="taste_2"
+						name="taste_banana"
+						value="banana"
+					/>
+					<label for="taste_2">Me gustan los plátanos</label>
+				</p>
+			</form>
+		</form>
+	</body>
+</html>
