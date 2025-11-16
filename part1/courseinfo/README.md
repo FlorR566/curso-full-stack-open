@@ -29,7 +29,6 @@ Entre los conceptos trabajados se encuentran:
    npm run dev
    ```
 
-```
 La aplicación estará disponible en el navegador en la dirección que indique Vite (por defecto http://localhost:5173/
 ).
 
@@ -47,4 +46,7 @@ Buenas prácticas para dividir la UI en partes reutilizables.
 
 Este proyecto corresponde a la Part 1 — Introduction to React.
 Más información disponible en: https://fullstackopen.com/
+
+```
+
 ```
