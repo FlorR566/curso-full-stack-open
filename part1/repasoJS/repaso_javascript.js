@@ -133,3 +133,51 @@ function product(a, b) {
 
 const resultado = product(2, 6);
 console.log(resultado); // result es = 12
+
+// THIS:
+console.log("___________ THIS ___________");
+const arto = {
+	name: "Arto Hellas",
+	age: 35,
+	education: "PhD",
+	greet: function () {
+		console.log("hello, my name is " + this.name);
+	},
+	doAddition: function (a, b) {
+		console.log(a + b);
+	},
+};
+
+arto.greet(); // se imprime "hello, my name is Arto Hellas"
+// los métodos se pueden asignar a los objetos incluso después de la creación del objeto:
+
+arto.growOlder = function () {
+	this.age += 1;
+};
+
+console.log(arto.age); // se imprime 35
+arto.growOlder();
+console.log(arto.age); // se imprime 36
+
+arto.doAddition(1, 4); // se imprime 5
+
+const referenceToAddition = arto.doAddition;
+referenceToAddition(10, 15); // se imprime 25
+
+// CLASES:
+console.log("___________ CLASES ___________");
+class Person {
+	constructor(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+	greet() {
+		console.log("hello, my name is " + this.name);
+	}
+}
+
+const adam = new Person("Adam Ondra", 29);
+adam.greet();
+
+const janja = new Person("Janja Garnbret", 23);
+janja.greet();
