@@ -1,16 +1,70 @@
-# React + Vite
+# 📘 Greetings App – React Basics
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una práctica introductoria de React donde se trabaja con:
 
-Currently, two official plugins are available:
+- Componentes funcionales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Props
 
-## React Compiler
+- Expresiones dentro de JSX
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Uso básico de variables y valores calculados
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Objetivo del ejercicio
+
+El propósito es comprender cómo:
+
+- Declarar componentes en React
+
+- Pasar datos mediante props
+
+- Renderizar valores dinámicos en JSX
+
+- Escribir expresiones JavaScript dentro de llaves {}
+
+---
+
+## 🧩 Código principal
+
+### Componente Hello
+
+Este componente recibe name y age a través de las props y muestra un saludo personalizado:
+
+```jsx
+const Hello = (props) => {
+	console.log(props);
+
+	return (
+		<div>
+			<p>
+				Hello {props.name}, you are {props.age} years old.
+			</p>
+		</div>
+	);
+};
+```
+
+### Componente App
+
+En App se definen variables y se pasan como props a cada componente Hello:
+
+```jsx
+const App = () => {
+	const name = "Peter";
+	const age = 10;
+
+	return (
+		<>
+			<h1>Greetings</h1>
+			<Hello name="Florencia" age={26 + 10} />
+			<Hello name={name} age={age} />
+		</>
+	);
+};
+```
+
+- Se muestra como pasar props literales.
+- Cómo usar expresiones dentro de JSX (26+10).
+- Cómo aprovechar variables para propagar datos.
