@@ -20,8 +20,17 @@ const Statistics = (props) => {
 			<StatisticLine text="Neutral:" value={props.neutral} />
 			<StatisticLine text="Bad:" value={props.bad} />
 			<StatisticLine text="All:" value={total} />
-			<StatisticLine text="Average:" value={total / 3} />
-			<StatisticLine text="Positive:" value={(props.good * 100) / total} />
+			<StatisticLine /*Promedio Ponderado */
+				text="Average:"
+				value={(
+					(props.good * 1 + props.neutral * 0 + props.bad * -1) /
+					total
+				).toFixed(1)}
+			/>
+			<StatisticLine
+				text="Positive:"
+				value={`${((props.good * 100) / total).toFixed(1)}%`}
+			/>
 		</>
 	);
 };

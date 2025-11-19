@@ -7,6 +7,8 @@ const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
 const Statistics = (props) => {
 	console.log(props);
 	const total = props.good + props.neutral + props.bad;
+	const average = (props.good * 1 + props.neutral * 0 + props.bad * -1) / total;
+	const positive = (props.good * 100) / total;
 
 	return (
 		<>
@@ -14,8 +16,8 @@ const Statistics = (props) => {
 			<div>Neutral: {props.neutral}</div>
 			<div>Bad: {props.bad}</div>
 			<div>All: {total}</div>
-			<div>Average: {total / 3}</div>
-			<div>Positive: {(props.good * 100) / total} %</div>
+			<div>Average: {total <= 0 ? "0" : average}</div>
+			<div>Positive: {total <= 0 ? "0" : positive} %</div>
 		</>
 	);
 };
