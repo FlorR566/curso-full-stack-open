@@ -17,6 +17,10 @@ const App = () => {
 	const increaseNeutral = () => setNeutral(neutral + 1);
 	const increaseBad = () => setBad(bad + 1);
 
+	const total = good + neutral + bad;
+	const average = (good * 1 + neutral * 0 + bad * -1) / total;
+	const positive = (good * 100) / total;
+
 	return (
 		<div>
 			<Header title={feedback} />
@@ -27,9 +31,11 @@ const App = () => {
 			<div>Good: {good}</div>
 			<div>Neutral: {neutral}</div>
 			<div>Bad: {bad}</div>
-			<div>All: {good + neutral + bad}</div>
-			<div>Average:{(good + neutral + bad) / 3} </div>
-			<div>Positive: {(good * 100) / (good + neutral + bad)} %</div>
+			<div>All: {total}</div>
+			<div>
+				{/*Promedio Ponderado */}Average: {total <= 0 ? "0" : average}
+			</div>
+			<div>Positive: {total <= 0 ? "0" : positive} %</div>
 		</div>
 	);
 };
