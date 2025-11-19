@@ -1,4 +1,4 @@
-# 📘 Anecdotes App
+# 📘 Anecdotes App --> Final (`App_1.14.jsx`)
 
 Este proyecto consiste en una aplicación hecha con **React** que muestra anécdotas de al azar, permitiendo a los usuarios votar por sus favoritas y mostrar la más votada.
 
