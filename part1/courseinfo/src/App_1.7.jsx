@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-const Header = ({ title }) => {
-	return <h1>{title}</h1>;
-};
+const Header = ({ title }) => <h1>{title}</h1>;
 
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
 
@@ -31,7 +29,7 @@ const App = () => {
 			<div>Bad: {bad}</div>
 			<div>All: {good + neutral + bad}</div>
 			<div>Average:{(good + neutral + bad) / 3} </div>
-			<div>Positive: {(good * (good + neutral + bad)) / 100} %</div>
+			<div>Positive: {(good * 100) / (good + neutral + bad)} %</div>
 		</div>
 	);
 };
