@@ -5,14 +5,21 @@ En esta sección se introduce el trabajo con **React**, el manejo de **component
 
 ## Contenido del proyecto
 
-El objetivo principal es crear una aplicación simple que muestra información de un curso y sus partes.  
+Todos los ejercicios se encuentran ordenados dentro de la carpeta 'src'.
+Para ejecutar cada uno basta con modificar la llamada a App dentro del archivo main --> import App from "./***<nombre_archivo>***";
+
+
 Entre los conceptos trabajados se encuentran:
 
 - Creación de componentes React
-- Uso de props para pasar información
+- Reutilización de componentes
+- Uso de props para pasar información y a componentes hijos
 - Renderización de listas y elementos
+- Renderización condicional
 - Separación de responsabilidades dentro de los componentes
 - Comprensión de cómo React actualiza la interfaz
+- Uso de useState 
+
 
 ## Cómo ejecutar el proyecto
 
@@ -47,6 +54,3 @@ Buenas prácticas para dividir la UI en partes reutilizables.
 Este proyecto corresponde a la Part 1 — Introduction to React.
 Más información disponible en: https://fullstackopen.com/
 
-```
-
-```
