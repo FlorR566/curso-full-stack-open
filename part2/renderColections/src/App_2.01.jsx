@@ -1,4 +1,4 @@
-import Course from "./components/Course";
+import Course from "./components/Course_2.01";
 
 const App = () => {
 	const course = {
@@ -7,22 +7,22 @@ const App = () => {
 		parts: [
 			{
 				name: "Fundamentals of React",
-				exercise: 10,
+				exercises: 10,
 				id: 1,
 			},
 			{
 				name: "Using props to pass data",
-				exercise: 7,
+				exercises: 7,
 				id: 2,
 			},
 			{
 				name: "State of a component",
-				exercise: 14,
+				exercises: 14,
 				id: 3,
 			},
 			// {
 			// 	name: "Sooooooool and Luna",
-			// 	exercise: 10,
+			// 	exercises: 10,
 			// 	id: 4,
 			// },
 		],
