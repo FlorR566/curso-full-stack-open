@@ -7,7 +7,7 @@ const Part = ({ part }) => {
 	//console.log("-->", part);
 	return (
 		<p>
-			{part.name}: {part.exercise}
+			{part.name}: {part.exercises}
 		</p>
 	);
 };
@@ -42,7 +42,7 @@ export default Course;
 // 	return (
 // 		<p>
 // 			Number of exercises{" "}
-// 			{parts[0].exercise + parts[1].exercise + parts[2].exercise}
+// 			{parts[0].exercise + parts[1].exercises + parts[2].exercises}
 // 		</p>
 // 	);
 // };
