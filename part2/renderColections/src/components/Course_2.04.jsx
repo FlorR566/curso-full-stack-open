@@ -1,49 +1,41 @@
-const Header = ({ course }) => {
-	//console.log(course);
-	return <h1>{course}</h1>;
-};
+const Header = ({ title }) => <h2>{title}</h2>;
 
-const Part = ({ part }) => {
-	//console.log("-->", part);
-	return (
-		<p>
-			{part.name}: {part.exercises}
+const Title = ({ title }) => <h1>{title}</h1>;
+
+const Part = ({ parts }) =>
+	parts.map((item) => (
+		<p key={item.id}>
+			{item.name}: {item.exercises}
 		</p>
-	);
-};
-
-const Content = ({ parts }) => {
-	const part = parts.map(function (part) {
-		return (
-			<li key={part.id}>
-				<Part part={part} />
-			</li>
-		);
-	});
-
-	return part;
-};
+	));
 
 const Total = ({ parts }) => {
-	const totalExercises = parts.reduce(function (sum, p) {
-		// console.log("Sumatoria:", sum);
-		// console.log("valor a sumar:", p.exercises);
-		return sum + p.exercises;
-	}, 0);
+	const total = parts.reduce((sum, p) => sum + p.exercises, 0);
 
 	return (
 		<p>
-			<strong>Number of exercises: {totalExercises} </strong>
+			<strong>Total of {total} exercises </strong>
 		</p>
 	);
 };
 
-const Course = ({ course }) => {
+const Content = ({ courses }) => (
+	<div>
+		{courses.map((part) => (
+			<div key={part.id}>
+				<Header title={part.name} />
+				<Part parts={part.parts} />
+				<Total parts={part.parts} />
+			</div>
+		))}
+	</div>
+);
+
+const Course = ({ courses, title }) => {
 	return (
 		<div>
-			<Header course={course.name} />
-			<Content parts={course.parts} />
-			<Total parts={course.parts} />
+			<Title title={title} />
+			<Content courses={courses} />
 		</div>
 	);
 };
