@@ -13,13 +13,29 @@ const App = () => {
 			name: newName,
 		};
 
+		const existName = persons.some(
+			(person) => person.name === personObject.name
+		);
+
+		if (existName) {
+			console.log("Erroooooooor");
+			return; // corta la ejecución de la función addPerson, evitamos que el siguiente código se ejecute
+		}
+
 		setPersons(persons.concat(personObject));
-		setNewName(" ");
+		setNewName("");
 	};
 
-	const handleAddName = (event) => {
+	const handleNameChange = (event) => {
 		//console.log(event.target.value);
-		setNewName(event.target.value);
+		const value = event.target.value;
+		setNewName(value);
+
+		// const isDuplicate = persons.some((person) => person.name === value);
+
+		// if (isDuplicate) {
+		// 	console.log("Error: el nombre ya existe");
+		// }
 	};
 
 	return (
@@ -27,7 +43,7 @@ const App = () => {
 			<h2>Phonebook</h2>
 			<form onSubmit={addPerson}>
 				<div>
-					name: <input value={newName} onChange={handleAddName} />
+					name: <input value={newName} onChange={handleNameChange} />
 				</div>
 				<div>
 					<button type="submit">add</button>
