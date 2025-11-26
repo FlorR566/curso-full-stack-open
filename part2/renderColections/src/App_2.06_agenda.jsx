@@ -69,15 +69,29 @@ const App = () => {
 			<h2>Phonebook</h2>
 			<div>
 				Filter shown with:{" "}
-				<input value={showName} onChange={handleFilterShow} />
+				<input
+					placeholder="add new filter..."
+					value={showName}
+					onChange={handleFilterShow}
+				/>
 			</div>
 			<h2>Add a new</h2>
 			<form onSubmit={addPerson}>
 				<div>
-					name: <input value={newName} onChange={handleNameChange} />
+					name:{" "}
+					<input
+						placeholder="add new name..."
+						value={newName}
+						onChange={handleNameChange}
+					/>
 				</div>
 				<div>
-					phone: <input value={newPhone} onChange={handlePhoneChange} />
+					phone:{" "}
+					<input
+						placeholder="add new phone..."
+						value={newPhone}
+						onChange={handlePhoneChange}
+					/>
 				</div>
 				<div>
 					<button type="submit">add</button>
