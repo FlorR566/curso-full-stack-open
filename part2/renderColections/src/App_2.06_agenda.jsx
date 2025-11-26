@@ -16,7 +16,6 @@ const App = () => {
 	]);
 	const [newName, setNewName] = useState("");
 	const [newPhone, setNewPhone] = useState("");
-	const [filteredPersons, setFilteredPersons] = useState(persons);
 	const [showName, setShowName] = useState("");
 
 	const addPerson = (event) => {
@@ -39,7 +38,6 @@ const App = () => {
 
 		const updated = persons.concat(personObject);
 		setPersons(updated);
-		setFilteredPersons(updated); // para que nunca se des-sincronicen
 		setNewName("");
 		setNewPhone("");
 	};
@@ -56,13 +54,14 @@ const App = () => {
 	const handleFilterShow = (event) => {
 		const value = event.target.value;
 		setShowName(value);
-
-		const existName = persons.filter((person) =>
-			person.name.toLowerCase().startsWith(value.toLowerCase())
-		);
-
-		setFilteredPersons(value === "" ? persons : existName);
 	};
+
+	const personsToShow =
+		showName == ""
+			? persons
+			: persons.filter((p) =>
+					p.name.toLowerCase().startsWith(showName.toLowerCase())
+			  );
 
 	return (
 		<div>
@@ -99,7 +98,7 @@ const App = () => {
 			</form>
 			<h2>Numbers</h2>
 			<ul>
-				<PersonList persons={showName === "" ? persons : filteredPersons} />
+				<PersonList persons={personsToShow} />
 			</ul>
 		</div>
 	);
