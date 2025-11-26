@@ -18,7 +18,7 @@ const App = () => {
 		);
 
 		if (existName) {
-			console.log("Erroooooooor");
+			alert(`${personObject.name} is already added to phonebook! `);
 			return; // corta la ejecución de la función addPerson, evitamos que el siguiente código se ejecute
 		}
 
