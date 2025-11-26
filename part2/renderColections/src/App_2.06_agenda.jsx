@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Person = ({ persons }) =>
+const PersonList = ({ persons }) =>
 	persons.map((person) => (
 		<li key={person.name}>
 			{person.name}: {person.phone}
@@ -9,16 +9,23 @@ const Person = ({ persons }) =>
 
 const App = () => {
 	const [persons, setPersons] = useState([
-		{ name: "Arto Hellas", phone: "30-45-2254365" },
+		{ name: "Arto Hellas", phone: "040-123456", id: 1 },
+		{ name: "Ada Lovelace", phone: "39-44-5323523", id: 2 },
+		{ name: "Dan Abramov", phone: "12-43-234345", id: 3 },
+		{ name: "Mary Poppendieck", phone: "39-23-6423122", id: 4 },
 	]);
-	const [newName, setNewName] = useState("add new name...");
-	const [newPhone, setNewPhone] = useState("add new phone...");
+	const [newName, setNewName] = useState("");
+	const [newPhone, setNewPhone] = useState("");
+	const [filteredPersons, setFilteredPersons] = useState(persons);
+	const [showName, setShowName] = useState("");
 
 	const addPerson = (event) => {
 		event.preventDefault();
+
 		const personObject = {
 			name: newName,
 			phone: newPhone,
+			id: persons.length + 1,
 		};
 
 		const existName = persons.some(
@@ -27,33 +34,44 @@ const App = () => {
 
 		if (existName) {
 			alert(`${personObject.name} is already added to phonebook! `);
-			return; // corta la ejecución de la función addPerson, evitamos que el siguiente código se ejecute
+			return;
 		}
 
-		setPersons(persons.concat(personObject));
+		const updated = persons.concat(personObject);
+		setPersons(updated);
+		setFilteredPersons(updated); // para que nunca se des-sincronicen
 		setNewName("");
 		setNewPhone("");
 	};
 
 	const handleNameChange = (event) => {
-		//console.log(event.target.value);
 		const value = event.target.value;
 		setNewName(value);
-
-		// const isDuplicate = persons.some((person) => person.name === value);
-
-		// if (isDuplicate) {
-		// 	console.log("Error: el nombre ya existe");
-		// }
 	};
 
 	const handlePhoneChange = (event) => {
 		setNewPhone(event.target.value);
 	};
 
+	const handleFilterShow = (event) => {
+		const value = event.target.value;
+		setShowName(value);
+
+		const existName = persons.filter((person) =>
+			person.name.toLowerCase().startsWith(value.toLowerCase())
+		);
+
+		setFilteredPersons(value === "" ? persons : existName);
+	};
+
 	return (
 		<div>
 			<h2>Phonebook</h2>
+			<div>
+				Filter shown with:{" "}
+				<input value={showName} onChange={handleFilterShow} />
+			</div>
+			<h2>Add a new</h2>
 			<form onSubmit={addPerson}>
 				<div>
 					name: <input value={newName} onChange={handleNameChange} />
@@ -67,7 +85,7 @@ const App = () => {
 			</form>
 			<h2>Numbers</h2>
 			<ul>
-				<Person persons={persons} />
+				<PersonList persons={showName === "" ? persons : filteredPersons} />
 			</ul>
 		</div>
 	);
