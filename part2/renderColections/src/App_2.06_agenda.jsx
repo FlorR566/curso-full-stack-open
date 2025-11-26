@@ -2,9 +2,9 @@ import { useState } from "react";
 
 const PersonList = ({ persons }) =>
 	persons.map((person) => (
-		<li key={person.name}>
+		<p key={person.name}>
 			{person.name}: {person.phone}
-		</li>
+		</p>
 	));
 
 const App = () => {
@@ -18,13 +18,20 @@ const App = () => {
 	const [newPhone, setNewPhone] = useState("");
 	const [showName, setShowName] = useState("");
 
+	const personsToShow =
+		showName == ""
+			? persons
+			: persons.filter((p) =>
+					p.name.toLowerCase().startsWith(showName.toLowerCase())
+			  );
+
 	const addPerson = (event) => {
 		event.preventDefault();
 
 		const personObject = {
 			name: newName,
 			phone: newPhone,
-			id: persons.length + 1,
+			id: crypto.randomUUID(),
 		};
 
 		const existName = persons.some(
@@ -55,13 +62,6 @@ const App = () => {
 		const value = event.target.value;
 		setShowName(value);
 	};
-
-	const personsToShow =
-		showName == ""
-			? persons
-			: persons.filter((p) =>
-					p.name.toLowerCase().startsWith(showName.toLowerCase())
-			  );
 
 	return (
 		<div>
@@ -97,9 +97,7 @@ const App = () => {
 				</div>
 			</form>
 			<h2>Numbers</h2>
-			<ul>
-				<PersonList persons={personsToShow} />
-			</ul>
+			<PersonList persons={personsToShow} />
 		</div>
 	);
 };
