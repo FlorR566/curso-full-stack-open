@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import App from "./App_2.06_agenda";
+import App from "./App_2.10_agenda";
 import { StrictMode } from "react";
 
 const notes = [

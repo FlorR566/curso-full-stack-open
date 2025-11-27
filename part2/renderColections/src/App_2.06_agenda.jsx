@@ -18,6 +18,8 @@ const App = () => {
 	const [newPhone, setNewPhone] = useState("");
 	const [showName, setShowName] = useState("");
 
+	console.log(persons);
+
 	const personsToShow =
 		showName == ""
 			? persons
