@@ -1,46 +1,7 @@
 import { useState } from "react";
-
-const PersonList = ({ persons }) =>
-	persons.map((person) => (
-		<p key={person.name}>
-			{person.name}: {person.phone}
-		</p>
-	));
-
-const Filter = ({ filterText, onFilterChange }) => (
-	<div>
-		Filter shown with:{" "}
-		<input
-			placeholder="add new filter..."
-			value={filterText}
-			onChange={onFilterChange}
-		/>
-	</div>
-);
-
-const PersonForm = ({ onSubmit, name, onNameChange, phone, onPhoneChange }) => (
-	<form onSubmit={onSubmit}>
-		<div>
-			name:{" "}
-			<input
-				placeholder="add new name..."
-				value={name}
-				onChange={onNameChange}
-			/>
-		</div>
-		<div>
-			phone:{" "}
-			<input
-				placeholder="add new phone..."
-				value={phone}
-				onChange={onPhoneChange}
-			/>
-		</div>
-		<div>
-			<button type="submit">add</button>
-		</div>
-	</form>
-);
+import PersonList from "./components/PersonList";
+import Filter from "./components/Filter";
+import PersonForm from "./components/PersonForm";
 
 const App = () => {
 	const [persons, setPersons] = useState([
