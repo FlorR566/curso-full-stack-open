@@ -18,28 +18,22 @@ const Filter = ({ showName, handleFilterShow }) => (
 	</div>
 );
 
-const PersonForm = ({
-	addPerson,
-	newName,
-	handleNameChange,
-	newPhone,
-	handlePhoneChange,
-}) => (
-	<form onSubmit={addPerson}>
+const PersonForm = ({ onSubmit, name, onNameChange, phone, onPhoneChange }) => (
+	<form onSubmit={onSubmit}>
 		<div>
 			name:{" "}
 			<input
 				placeholder="add new name..."
-				value={newName}
-				onChange={handleNameChange}
+				value={name}
+				onChange={onNameChange}
 			/>
 		</div>
 		<div>
 			phone:{" "}
 			<input
 				placeholder="add new phone..."
-				value={newPhone}
-				onChange={handlePhoneChange}
+				value={phone}
+				onChange={onPhoneChange}
 			/>
 		</div>
 		<div>
@@ -108,11 +102,11 @@ const App = () => {
 			<Filter showName={showName} handleFilterShow={handleFilterShow} />
 			<h3>Add a new</h3>
 			<PersonForm
-				addPerson={addPerson}
-				newName={newName}
-				handleNameChange={handleNameChange}
-				newPhone={newPhone}
-				handlePhoneChange={handlePhoneChange}
+				onSubmit={addPerson}
+				name={newName}
+				onNameChange={handleNameChange}
+				phone={newPhone}
+				onPhoneChange={handlePhoneChange}
 			/>
 			<h3>Numbers</h3>
 			<PersonList persons={personsToShow} />
