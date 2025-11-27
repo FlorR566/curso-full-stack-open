@@ -7,13 +7,13 @@ const PersonList = ({ persons }) =>
 		</p>
 	));
 
-const Filter = ({ showName, handleFilterShow }) => (
+const Filter = ({ filterText, onFilterChange }) => (
 	<div>
 		Filter shown with:{" "}
 		<input
 			placeholder="add new filter..."
-			value={showName}
-			onChange={handleFilterShow}
+			value={filterText}
+			onChange={onFilterChange}
 		/>
 	</div>
 );
@@ -51,13 +51,13 @@ const App = () => {
 	]);
 	const [newName, setNewName] = useState("");
 	const [newPhone, setNewPhone] = useState("");
-	const [showName, setShowName] = useState("");
+	const [filterText, setFilterText] = useState("");
 
 	const personsToShow =
-		showName == ""
+		filterText == ""
 			? persons
 			: persons.filter((p) =>
-					p.name.toLowerCase().startsWith(showName.toLowerCase())
+					p.name.toLowerCase().startsWith(filterText.toLowerCase())
 			  );
 
 	const addPerson = (event) => {
@@ -93,13 +93,13 @@ const App = () => {
 	};
 
 	const handleFilterShow = (event) => {
-		setShowName(event.target.value);
+		setFilterText(event.target.value);
 	};
 
 	return (
 		<div>
 			<h1>Phonebook</h1>
-			<Filter showName={showName} handleFilterShow={handleFilterShow} />
+			<Filter filterText={filterText} onFilterChange={handleFilterShow} />
 			<h3>Add a new</h3>
 			<PersonForm
 				onSubmit={addPerson}
