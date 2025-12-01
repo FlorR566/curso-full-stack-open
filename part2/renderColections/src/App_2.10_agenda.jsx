@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import personService from "./services/persons";
 import PersonList from "./components/PersonList";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
@@ -11,11 +11,15 @@ const App = () => {
 	const [filterText, setFilterText] = useState("");
 
 	useEffect(() => {
-		console.log("effect");
-		axios.get("http://localhost:3001/persons").then((response) => {
-			console.log("promise fulfilled");
-			setPersons(response.data);
+		personService.getAll().then((initialPersons) => {
+			setPersons(initialPersons);
 		});
+
+		// console.log("effect");
+		// axios.get("http://localhost:3001/persons").then((response) => {
+		// 	console.log("promise fulfilled");
+		// 	setPersons(response.data);
+		// });
 	}, []);
 	console.log("render", persons.length, "persons");
 
