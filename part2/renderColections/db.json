@@ -3,17 +3,17 @@
     {
       "id": "e354",
       "content": "HTML is easy",
-      "important": false
+      "important": true
     },
     {
       "id": "my60",
       "content": "Browser can execute only JavaScript",
-      "important": false
+      "important": true
     },
     {
       "id": "yt90",
       "content": "GET and POST are the most important methods of HTTP protocol",
-      "important": false
+      "important": true
     },
     {
       "id": "9g88",
@@ -33,39 +33,64 @@
     {
       "id": "1adb",
       "content": " ",
-      "important": false
+      "important": true
     },
     {
       "id": "be58",
       "content": "a new note...",
-      "important": false
+      "important": true
     },
     {
       "id": "ba4f",
       "content": " ",
+      "important": true
+    },
+    {
+      "id": "26f2",
+      "content": "Ya son las 7:16 pm",
+      "important": true
+    },
+    {
+      "id": "8719",
+      "content": "nueva nota!! Lunes =) ",
       "important": false
+    },
+    {
+      "id": "2c78",
+      "content": "parece que saleeee =)",
+      "important": true
+    },
+    {
+      "id": "933c",
+      "content": "parece que saleeee =)",
+      "important": true
+    },
+    {
+      "id": "8391",
+      "content": "=)",
+      "important": true
     }
   ],
   "persons": [
     {
       "name": "Arto Hellas",
       "number": "040-123456",
-      "id": 1
+      "id": "1"
     },
     {
       "name": "Ada Lovelace",
       "number": "39-44-5323523",
-      "id": 2
+      "id": "2"
     },
     {
       "name": "Dan Abramov",
       "number": "12-43-234345",
-      "id": 3
+      "id": "3"
     },
     {
       "name": "Mary Poppendieck",
       "number": "39-23-6423122",
-      "id": 4
+      "id": "4"
     }
   ]
 }
