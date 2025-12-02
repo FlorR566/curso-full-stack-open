@@ -10,16 +10,11 @@ const App = () => {
 	const [newPhone, setNewPhone] = useState("");
 	const [filterText, setFilterText] = useState("");
 
+	// Traemos los datos iniciales
 	useEffect(() => {
 		personService.getAll().then((initialPersons) => {
 			setPersons(initialPersons);
 		});
-
-		// console.log("effect");
-		// axios.get("http://localhost:3001/persons").then((response) => {
-		// 	console.log("promise fulfilled");
-		// 	setPersons(response.data);
-		// });
 	}, []);
 	console.log("render", persons.length, "persons");
 
@@ -47,11 +42,12 @@ const App = () => {
 			alert(`${personObject.name} is already added to phonebook! `);
 			return;
 		}
-
-		const updated = persons.concat(personObject);
-		setPersons(updated);
-		setNewName("");
-		setNewPhone("");
+		// Guardamos una nueva entrada
+		personService.create(personObject).then((returnedNote) => {
+			setPersons(persons.concat(returnedNote));
+			setNewName("");
+			setNewPhone("");
+		});
 	};
 
 	const handleNameChange = (event) => {
