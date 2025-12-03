@@ -62,6 +62,12 @@ const App = () => {
 		setFilterText(event.target.value);
 	};
 
+	const updateList = () => {
+		personService.getAll().then((updateList) => {
+			setPersons(updateList);
+		});
+	};
+
 	return (
 		<div>
 			<h1>Phonebook</h1>
@@ -75,7 +81,7 @@ const App = () => {
 				onPhoneChange={handlePhoneChange}
 			/>
 			<h3>Numbers</h3>
-			<PersonList persons={personsToShow} />
+			<PersonList persons={personsToShow} updateList={() => updateList()} />
 		</div>
 	);
 };
