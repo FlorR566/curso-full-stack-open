@@ -19,7 +19,7 @@ const App = () => {
 	console.log("render", persons.length, "persons");
 
 	const personsToShow =
-		filterText == ""
+		filterText === ""
 			? persons
 			: persons.filter((p) =>
 					p.name.toLowerCase().startsWith(filterText.toLowerCase())
@@ -28,26 +28,38 @@ const App = () => {
 	const addPerson = (event) => {
 		event.preventDefault();
 
-		const personObject = {
-			name: newName,
-			phone: newPhone,
-			id: crypto.randomUUID(),
-		};
-
-		const existName = persons.some(
-			(person) => person.name === personObject.name
+		const existingPerson = persons.find(
+			(p) => p.name.toLowerCase() === newName.toLowerCase()
 		);
 
-		if (existName) {
-			alert(`${personObject.name} is already added to phonebook! `);
-			return;
+		if (!existingPerson) {
+			const personObject = {
+				name: newName,
+				phone: newPhone,
+			};
+			// Guardamos una nueva entrada (si no existe)
+			personService.create(personObject).then((returnedPerson) => {
+				setPersons(persons.concat(returnedPerson));
+				setNewName("");
+				setNewPhone("");
+			});
+		} else {
+			const ok = confirm(
+				`${newName} is already added to phonebook, replace the old number with a new one?`
+			);
+
+			if (!ok) return;
+
+			personService
+				.update(existingPerson.id, { ...existingPerson, phone: newPhone })
+				.then((updatedPerson) => {
+					setPersons(
+						persons.map((p) => (p.id !== existingPerson.id ? p : updatedPerson))
+					);
+					setNewName("");
+					setNewPhone("");
+				});
 		}
-		// Guardamos una nueva entrada
-		personService.create(personObject).then((returnedNote) => {
-			setPersons(persons.concat(returnedNote));
-			setNewName("");
-			setNewPhone("");
-		});
 	};
 
 	const handleNameChange = (event) => {
@@ -62,10 +74,21 @@ const App = () => {
 		setFilterText(event.target.value);
 	};
 
-	const updateList = () => {
-		personService.getAll().then((updateList) => {
-			setPersons(updateList);
-		});
+	const handleDelete = (id) => {
+		const person = persons.find((p) => p.id === id);
+		const ok = confirm(`Delete ${person.name}`);
+
+		if (!ok) return;
+
+		personService
+			.remove(id)
+			.then(() => {
+				setPersons(persons.filter((p) => p.id !== id));
+			})
+			.catch(() => {
+				alert("Person was already removed from server");
+				setPersons(persons.filter((p) => p.id !== id));
+			});
 	};
 
 	return (
@@ -81,7 +104,7 @@ const App = () => {
 				onPhoneChange={handlePhoneChange}
 			/>
 			<h3>Numbers</h3>
-			<PersonList persons={personsToShow} updateList={() => updateList()} />
+			<PersonList persons={personsToShow} onDelete={handleDelete} />
 		</div>
 	);
 };
