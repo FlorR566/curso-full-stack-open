@@ -3,7 +3,7 @@
     {
       "id": "e354",
       "content": "HTML is easy",
-      "important": true
+      "important": false
     },
     {
       "id": "my60",
@@ -43,31 +43,16 @@
     {
       "id": "ba4f",
       "content": " ",
-      "important": true
-    },
-    {
-      "id": "26f2",
-      "content": "Ya son las 7:16 pm",
-      "important": true
-    },
-    {
-      "id": "8719",
-      "content": "nueva nota!! Lunes =) ",
       "important": false
-    },
-    {
-      "id": "2c78",
-      "content": "parece que saleeee =)",
-      "important": true
-    },
-    {
-      "id": "933c",
-      "content": "parece que saleeee =)",
-      "important": true
     },
     {
       "id": "8391",
       "content": "=)",
+      "important": false
+    },
+    {
+      "id": "bc63",
+      "content": "miercoles again",
       "important": true
     }
   ],
