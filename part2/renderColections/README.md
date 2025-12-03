@@ -24,7 +24,7 @@ En esta sección se profundiza en conceptos clave de React, manejo de estado má
 ### **3. Comunicación con el servidor**
 
 - Uso de **axios** para realizar peticiones HTTP.
-- Operaciones CRUD (crear, leer, actualizar, eliminar).
+- Operaciones CRUD (Create, Read, Update, Delete).
 - Manejo de Promesas y estados de carga.
 
 ### **4. Servicios externos**
