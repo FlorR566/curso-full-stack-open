@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
+import Notification from "./components/Notification";
 import personService from "./services/persons";
 import PersonList from "./components/PersonList";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
-import Notification from "./components/Notification";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
 	const [newName, setNewName] = useState("");
 	const [newPhone, setNewPhone] = useState("");
 	const [filterText, setFilterText] = useState("");
-	const [errorMessage, setErrorMessage] = useState(null);
+	const [addMessage, setAddMessage] = useState(null);
 
 	// Traemos los datos iniciales
 	useEffect(() => {
@@ -45,6 +45,10 @@ const App = () => {
 				setPersons(persons.concat(returnedPerson));
 				setNewName("");
 				setNewPhone("");
+				setAddMessage(`Added ${personObject.name}`);
+				setTimeout(() => {
+					setAddMessage(null);
+				}, 2000);
 			});
 		} else {
 			const ok = confirm(
@@ -58,9 +62,13 @@ const App = () => {
 				.then((updatedPerson) => {
 					setPersons(
 						persons.map((p) => (p.id !== existingPerson.id ? p : updatedPerson))
-					).catch((error) => setErrorMessage(`Added ${existingPerson.name}`));
+					);
 					setNewName("");
 					setNewPhone("");
+					setAddMessage(`Added ${existingPerson.name}`);
+					setTimeout(() => {
+						setAddMessage(null);
+					}, 2000);
 				});
 		}
 	};
@@ -97,8 +105,7 @@ const App = () => {
 	return (
 		<div>
 			<h1>Phonebook</h1>
-
-			<Notification message={errorMessage} />
+			<Notification successMessage={addMessage} />
 			<Filter filterText={filterText} onFilterChange={handleFilterShow} />
 			<h3>Add a new</h3>
 			<PersonForm
