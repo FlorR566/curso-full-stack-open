@@ -3,28 +3,15 @@ import personService from "./services/persons";
 import PersonList from "./components/PersonList";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
-
-const Footer = () => {
-	const footerStyle = {
-		color: "green",
-		fontStyle: "italic",
-		fontSize: 16,
-	};
-	return (
-		<div style={footerStyle}>
-			<br />
-			<em>
-				Phonebook app, Department of Computer Science, University of Helsinki
-			</em>
-		</div>
-	);
-};
+import Notification from "./components/Notification";
+import Footer from "./components/Footer";
 
 const App = () => {
 	const [persons, setPersons] = useState([]);
 	const [newName, setNewName] = useState("");
 	const [newPhone, setNewPhone] = useState("");
 	const [filterText, setFilterText] = useState("");
+	const [errorMessage, setErrorMessage] = useState(null);
 
 	// Traemos los datos iniciales
 	useEffect(() => {
@@ -71,7 +58,7 @@ const App = () => {
 				.then((updatedPerson) => {
 					setPersons(
 						persons.map((p) => (p.id !== existingPerson.id ? p : updatedPerson))
-					);
+					).catch((error) => setErrorMessage(`Added ${existingPerson.name}`));
 					setNewName("");
 					setNewPhone("");
 				});
@@ -110,6 +97,8 @@ const App = () => {
 	return (
 		<div>
 			<h1>Phonebook</h1>
+
+			<Notification message={errorMessage} />
 			<Filter filterText={filterText} onFilterChange={handleFilterShow} />
 			<h3>Add a new</h3>
 			<PersonForm
