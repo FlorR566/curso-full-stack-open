@@ -11,7 +11,8 @@ const App = () => {
 	const [newName, setNewName] = useState("");
 	const [newPhone, setNewPhone] = useState("");
 	const [filterText, setFilterText] = useState("");
-	const [addMessage, setAddMessage] = useState(null);
+	const [message, setMessage] = useState(null);
+	const [isError, setIsError] = useState(false);
 
 	// Traemos los datos iniciales
 	useEffect(() => {
@@ -45,9 +46,10 @@ const App = () => {
 				setPersons(persons.concat(returnedPerson));
 				setNewName("");
 				setNewPhone("");
-				setAddMessage(`Added ${personObject.name}`);
+				setMessage(`Added ${personObject.name}`);
+				setIsError(false);
 				setTimeout(() => {
-					setAddMessage(null);
+					setMessage(null);
 				}, 2000);
 			});
 		} else {
@@ -65,10 +67,22 @@ const App = () => {
 					);
 					setNewName("");
 					setNewPhone("");
-					setAddMessage(`Added ${existingPerson.name}`);
+					setMessage(`Added ${existingPerson.name}`);
+					setIsError(false);
 					setTimeout(() => {
-						setAddMessage(null);
+						setMessage(null);
 					}, 2000);
+				})
+				// eslint-disable-next-line no-unused-vars
+				.catch((error) => {
+					setMessage(
+						`Information of '${existingPerson.name}' has already been removed from server`
+					);
+					setIsError(true);
+					setTimeout(() => {
+						setMessage(null);
+					}, 5000);
+					setPersons(persons.filter((p) => p.id !== existingPerson.id));
 				});
 		}
 	};
@@ -91,21 +105,16 @@ const App = () => {
 
 		if (!ok) return;
 
-		personService
-			.remove(id)
-			.then(() => {
-				setPersons(persons.filter((p) => p.id !== id));
-			})
-			.catch(() => {
-				alert("Person was already removed from server");
-				setPersons(persons.filter((p) => p.id !== id));
-			});
+		personService.remove(id).then(() => {
+			setPersons(persons.filter((p) => p.id !== id));
+		});
+		setPersons(persons.filter((p) => p.id !== id));
 	};
 
 	return (
 		<div>
 			<h1>Phonebook</h1>
-			<Notification successMessage={addMessage} />
+			<Notification message={message} isError={isError} />
 			<Filter filterText={filterText} onFilterChange={handleFilterShow} />
 			<h3>Add a new</h3>
 			<PersonForm
