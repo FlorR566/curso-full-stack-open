@@ -1,4 +1,4 @@
-const Footer = () => {
+const Footer = ({ text }) => {
 	const footerStyle = {
 		color: "green",
 		fontStyle: "italic",
@@ -7,9 +7,7 @@ const Footer = () => {
 	return (
 		<div style={footerStyle}>
 			<br />
-			<em>
-				Phonebook app, Department of Computer Science, University of Helsinki
-			</em>
+			<em>{text}</em>
 		</div>
 	);
 };
