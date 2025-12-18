@@ -81,7 +81,7 @@ const App = () => {
 					setIsError(true);
 					setTimeout(() => {
 						setMessage(null);
-					}, 5000);
+					}, 2000);
 					setPersons(persons.filter((p) => p.id !== existingPerson.id));
 				});
 		}
@@ -105,10 +105,20 @@ const App = () => {
 
 		if (!ok) return;
 
-		personService.remove(id).then(() => {
-			setPersons(persons.filter((p) => p.id !== id));
-		});
-		setPersons(persons.filter((p) => p.id !== id));
+		personService
+			.remove(id)
+			.then(() => {
+				setPersons(persons.filter((p) => p.id !== id));
+				setMessage(`'${person.name}' deleted succesfully!`);
+				setIsError(true);
+				setTimeout(() => {
+					setMessage(null);
+				}, 2000);
+			})
+			.catch(() => {
+				alert(`'${person.name}' was already removed from server`);
+				setPersons(persons.filter((p) => p.id !== id));
+			});
 	};
 
 	return (
@@ -126,7 +136,11 @@ const App = () => {
 			/>
 			<h3>Numbers</h3>
 			<PersonList persons={personsToShow} onDelete={handleDelete} />
-			<Footer />
+			<Footer
+				text={
+					"Phonebook app, Department of Computer Science, University of Helsinki"
+				}
+			/>
 		</div>
 	);
 };
