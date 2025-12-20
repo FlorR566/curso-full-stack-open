@@ -1,6 +1,6 @@
-const Filter = ({ filterText, onFilterChange }) => (
+const Filter = ({ descriptionText, filterText, onFilterChange }) => (
 	<div>
-		Filter shown with:{" "}
+		{descriptionText}{" "}
 		<input
 			placeholder="add new filter..."
 			value={filterText}

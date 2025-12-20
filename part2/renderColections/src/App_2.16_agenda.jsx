@@ -125,7 +125,11 @@ const App = () => {
 		<div>
 			<h1>Phonebook</h1>
 			<Notification message={message} isError={isError} />
-			<Filter filterText={filterText} onFilterChange={handleFilterShow} />
+			<Filter
+				filterText={filterText}
+				onFilterChange={handleFilterShow}
+				descriptionText={"Filter shown with: "}
+			/>
 			<h3>Add a new</h3>
 			<PersonForm
 				onSubmit={addPerson}
