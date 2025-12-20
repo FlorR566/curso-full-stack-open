@@ -3,6 +3,19 @@ h1 {
 	font-style: italic;
 }
 
+h2 {
+	font-size: 40px;
+}
+
+h3 {
+	font-size: 25px;
+}
+
+.flag {
+	width: 350px;
+	height: auto;
+}
+
 .note {
 	color: grey;
 	padding-top: 3px;
