@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import App from "./App_2.18";
 import { StrictMode } from "react";
 import "./index.css";
 
