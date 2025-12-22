@@ -1,87 +1,86 @@
-# Full Stack Open – Universidad de Helsinki
+# Full Stack Open – University of Helsinki
 
-Este repositorio contiene las soluciones, ejercicios y apuntes del curso **Full Stack Open** dictado por la **Universidad de Helsinki**.  
-El curso se centra en el desarrollo web moderno, utilizando principalmente **JavaScript**, **React**, **Node.js** y herramientas actuales del ecosistema.
+This repository contains the solutions, exercises, and notes from the **Full Stack Open** course offered by the **University of Helsinki**.
+The course focuses on modern web development, primarily using **JavaScript**, **React**, **Node.js**, and current tools from the modern web ecosystem.
 
-## ¿Qué temas se ven?
+## Topics Covered
 
-A lo largo del curso se trabajan temas esenciales del desarrollo full stack, entre ellos:
+Throughout the course, essential full stack development topics are addressed, including:
 
-### 🔹 **1. React y fundamentos del frontend**
+### 🔹 **1. React and Frontend Fundamentals**
 
-- Componentes
-- Props y estado
-- Manejo de eventos
-- Renderizado condicional
-- Listas y claves
-- Formularios controlados
+- Components
+- Props and state
+- Event handling
+- Conditional rendering
+- Lists and keys
+- Controlled forms
 
-### 🔹 **2. Comunicaciones con el servidor**
+### 🔹 **2. Server Communication**
 
-- Peticiones HTTP
-- Promesas y async/await
-- Axios y fetch
-- Manejo básico de errores
+- HTTP requests
+- Promises and async/await
+- Axios and fetch
+- Basic error handling
 
-### 🔹 **3. Servidor con Node.js y Express**
+### 🔹 **3. Backend with Node.js and Express**
 
-- Creación de APIs REST
-- Rutas
-- Middlewares
-- Manejo de datos
-- Validaciones
+- Building REST APIs
+- Routing
+- Middleware
+- Data handling
+- Validations
 
-### 🔹 **4. Persistencia en bases de datos**
+### 🔹 **4. Database Persistence**
 
-- Uso de MongoDB
-- Modelos con Mongoose
-- CRUD completo del lado del servidor
+- MongoDB
+- Mongoose models
+- Full CRUD operations on the server side
 
 ### 🔹 **5. Testing**
 
-- Pruebas de componentes
-- Pruebas de API
-- Herramientas como Jest y supertest
+- Component testing
+- API testing
+- Tools such as Jest and Supertest
 
-### 🔹 **6. Autenticación, autorizaciones y seguridad**
+### 🔹 **6. Authentication, Authorization, and Security**
 
-- Tokens JWT
-- Sesiones
-- Buenas prácticas de seguridad
+- JWT tokens
+- Sessions
+- Security best practices
 
-### 🔹 **7. Deploy**
+### 🔹 **7. Deployment**
 
-- Cómo publicar tanto frontend como backend
-- Entornos de producción
+- Deploying both frontend and backend
+- Production environments
 
 ---
 
 ## Estructura del repositorio
 
-El repositorio está organizado por **partes (parts)** según la estructura del curso:
+The repository is organized by **parts**, following the structure of the course:
 
 part0/
 part1/
 part2/
 ...
 
-Cada carpeta contiene los ejercicios correspondientes, junto con notas personales y pequeños proyectos desarrollados en cada sección.
+Each folder contains the corresponding exercises, along with personal notes and small projects developed in each section.
 
 ---
 
-## Objetivo
+## Objective
 
-Mi objetivo con este repositorio es:
+The goal of this repository is to:
 
-- Consolidar mis conocimientos en desarrollo web moderno
-- Trabajar con tecnologías utilizadas actualmente en la industria
-- Practicar buenas prácticas de programación, testing y deploy
-- Documentar mi avance y aprender de forma más ordenada
+- Consolidate my knowledge of modern web development
+- Work with technologies currently used in the industry
+- Practice good programming, testing, and deployment practices
+- Document my progress and learn in a more structured way
 
 ---
 
-## Curso original
+## Original Course
 
-**Full Stack Open**  
-Universidad de Helsinki  
+University of Helsinki
 https://fullstackopen.com/
