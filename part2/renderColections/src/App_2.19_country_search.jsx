@@ -2,44 +2,44 @@ import { useState, useEffect } from "react";
 import countryService from "./services/restcountries";
 import Filter from "./components/Filter";
 import CountryList from "./components/CountryList_2.19";
+import Country from "./components/Country_2.19";
 
 const App = () => {
 	const [countries, setCountries] = useState([]);
 	const [filterText, setFilterText] = useState("");
+	const [selectedCountry, setSelectedCountry] = useState(null);
 
 	// Traemos los datos iniciales
 	useEffect(() => {
-		countryService.getAll().then((initialCountries) => {
-			setCountries(initialCountries);
-		});
+		countryService.getAll().then(setCountries);
 	}, []);
 
 	console.log("render", countries.length, "countries");
 
-	if (!countries) {
-		return null;
-	}
-
 	const countriesToShow =
 		filterText === ""
-			? countries
+			? []
 			: countries.filter((c) =>
 					c.name.official.toLowerCase().startsWith(filterText.toLowerCase())
 			  );
-
-	const handleFilterShow = (event) => {
-		setFilterText(event.target.value);
-	};
 
 	return (
 		<>
 			<Filter
 				descriptionText={"Find Countries"}
 				filterText={filterText}
-				onFilterChange={handleFilterShow}
+				onFilterChange={(e) => {
+					setFilterText(e.target.value);
+					setSelectedCountry(null);
+				}}
 			/>
 
-			{filterText === "" ? null : <CountryList countries={countriesToShow} />}
+			<CountryList
+				countries={countriesToShow}
+				onSelectedCountry={setSelectedCountry}
+			/>
+
+			{selectedCountry && <Country country={selectedCountry} />}
 		</>
 	);
 };
