@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import App from "./App_2.19_country_search";
+import App from "./App";
 import { StrictMode } from "react";
 import "./index.css";
 
