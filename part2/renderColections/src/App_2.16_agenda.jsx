@@ -90,11 +90,11 @@ const App = () => {
 						setMessage(
 							`Information of '${existingPerson.name}' has already ben removed from server`,
 						);
+						setNewName("");
+						setNewPhone("");
 						setIsError(true);
 						// Lo quitamos de la lista local porque ya no existes
 						setPersons(persons.filter((p) => p.id !== existingPerson.id));
-						setNewName("");
-						setNewPhone("");
 					}
 					// Si el servidor respondió con 400 (error de validación / gramatical)
 					else if (error.response.data && error.response.data.error) {
