@@ -26,14 +26,14 @@ const App = () => {
 		filterText === ""
 			? persons
 			: persons.filter((p) =>
-					p.name.toLowerCase().startsWith(filterText.toLowerCase())
-			  );
+					p.name.toLowerCase().startsWith(filterText.toLowerCase()),
+				);
 
 	const addPerson = (event) => {
 		event.preventDefault();
 
 		const existingPerson = persons.find(
-			(p) => p.name.toLowerCase() === newName.toLowerCase()
+			(p) => p.name.toLowerCase() === newName.toLowerCase(),
 		);
 
 		if (!existingPerson) {
@@ -42,19 +42,29 @@ const App = () => {
 				phone: newPhone,
 			};
 			// Guardamos una nueva entrada (si no existe)
-			personService.create(personObject).then((returnedPerson) => {
-				setPersons(persons.concat(returnedPerson));
-				setNewName("");
-				setNewPhone("");
-				setMessage(`Added ${personObject.name}`);
-				setIsError(false);
-				setTimeout(() => {
-					setMessage(null);
-				}, 2000);
-			});
+			personService
+				.create(personObject)
+				.then((returnedPerson) => {
+					setPersons(persons.concat(returnedPerson));
+					setNewName("");
+					setNewPhone("");
+					setMessage(`Added ${personObject.name}`);
+					setIsError(false);
+					setTimeout(() => {
+						setMessage(null);
+					}, 5000);
+				})
+				.catch((error) => {
+					// accedemos al manejo de error
+					setMessage(`${error.response.data.error}`);
+					setIsError(true);
+					setTimeout(() => {
+						setMessage(null);
+					}, 5000);
+				});
 		} else {
 			const ok = confirm(
-				`${newName} is already added to phonebook, replace the old number with a new one?`
+				`${newName} is already added to phonebook, replace the old number with a new one?`,
 			);
 
 			if (!ok) return;
@@ -62,27 +72,42 @@ const App = () => {
 			personService
 				.update(existingPerson.id, { ...existingPerson, phone: newPhone })
 				.then((updatedPerson) => {
+					// Caso de éxito: actualizamos la lista
 					setPersons(
-						persons.map((p) => (p.id !== existingPerson.id ? p : updatedPerson))
+						persons.map((p) =>
+							p.id !== existingPerson.id ? p : updatedPerson,
+						),
 					);
 					setNewName("");
 					setNewPhone("");
-					setMessage(`Added ${existingPerson.name}`);
 					setIsError(false);
-					setTimeout(() => {
-						setMessage(null);
-					}, 2000);
+					setMessage(`Updated ${existingPerson.name}`);
+					setTimeout(() => setMessage(null), 5000);
 				})
-				// eslint-disable-next-line no-unused-vars
 				.catch((error) => {
-					setMessage(
-						`Information of '${existingPerson.name}' has already been removed from server`
-					);
-					setIsError(true);
-					setTimeout(() => {
-						setMessage(null);
-					}, 2000);
-					setPersons(persons.filter((p) => p.id !== existingPerson.id));
+					// Si el servidor respondió 404 (no encontrado)
+					if (error.response.status === 404) {
+						setMessage(
+							`Information of '${existingPerson.name}' has already ben removed from server`,
+						);
+						setIsError(true);
+						// Lo quitamos de la lista local porque ya no existes
+						setPersons(persons.filter((p) => p.id !== existingPerson.id));
+						setNewName("");
+						setNewPhone("");
+					}
+					// Si el servidor respondió con 400 (error de validación / gramatical)
+					else if (error.response.data && error.response.data.error) {
+						setMessage(error.response.data.error);
+						setIsError(true);
+					}
+					// Error genérico
+					else {
+						setMessage("An unexpected error occurred");
+						setIsError(true);
+					}
+
+					setTimeout(() => setMessage(null), 5000);
 				});
 		}
 	};
@@ -113,7 +138,7 @@ const App = () => {
 				setIsError(true);
 				setTimeout(() => {
 					setMessage(null);
-				}, 2000);
+				}, 3000);
 			})
 			.catch(() => {
 				alert(`'${person.name}' was already removed from server`);
