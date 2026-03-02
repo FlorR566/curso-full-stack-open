@@ -1,123 +1,66 @@
-# Full Stack Open — Parte 2 (Frontend) que se integra a la Parte 3(Backend)
+# Full Stack Open – Part 4: Testing and User Administration
 
-### _Renderizado dinámico, formularios y comunicación con el servidor_
+This section of the repository focuses on the exercises and projects from **Part 4** of the Full Stack Open course by the **University of Helsinki**.
 
-Este repositorio contiene los ejercicios correspondientes a la **Parte 2** del curso **Full Stack Open** dictado por la Universidad de Helsinki que se integran a la Parte 3 (Backend) del curso.
-En esta sección se profundiza en conceptos clave de React, manejo de estado más avanzado y comunicación con APIs.
+The main goal of this part is to transition from a basic backend to a production-grade application, emphasizing project structure, automated testing, and secure user management.
 
----
+## Key Topics Covered in Part 4
 
-## Contenidos principales
+In this section, I have refactored the backend and implemented advanced features:
 
-### **1. Renderización de una colección de datos**
+### **1. Professional Project Structure**
 
-- Uso de `map()` para renderizar listas.
-- Uso correcto de la prop `key`.
-- División del código en componentes reutilizables.
+- Separating the application into modules: `controllers`, `models`, `utils`, and `middleware`.
+- Creating a clear entry point (`index.js`) and a separate application logic file (`app.js`) to facilitate testing.
+- Extracting configuration and logging into dedicated utility modules.
 
-### **2. Formularios en React**
+### **2. Backend Testing**
 
-- Inputs controlados con `useState`.
-- Manejo de eventos en formularios.
-- Actualización del estado según la interacción del usuario.
+- Writing automated tests for the API using **Node's built-in test runner** (or **Jest**).
+- Using **Supertest** to test the API endpoints without running the server manually.
+- Implementing the "test-driven" mindset to ensure the database and routes work as expected.
+- Setting up a separate **testing database** to keep production/development data clean.
 
-### **3. Comunicación con el servidor**
+### **3. User Administration**
 
-- Uso de **axios** para realizar peticiones HTTP.
-- Operaciones CRUD (Create, Read, Update, Delete).
-- Manejo de Promesas y estados de carga.
+- Implementing user creation with secure password hashing using **bcrypt**.
+- Establishing relationships between data (e.g., linking notes or blogs to specific users).
+- Server-side validation for unique usernames and password strength.
 
-### **4. Servicios externos**
+### **4. Token-Based Authentication**
 
-- Creación de archivos de servicio (ej: `services/persons.js`).
-- Encapsulamiento de lógica HTTP.
-- Código más modular y mantenible.
-
-### **5. Ejercicio principal: Phonebook**
-
-Incluye funcionalidades como:
-
-- Agregar contactos.
-- Evitar duplicados.
-- Filtrar contactos por nombre.
-- Eliminar registros.
-- Mostrar mensajes de éxito o error.
+- Implementing **JSON Web Tokens (JWT)** for secure login.
+- Restricting API actions (like POST or DELETE) to authenticated users only.
+- Handling authorization logic through custom middleware.
 
 ---
 
-## 📁 Estructura del proyecto
+## 📂 Part 4 Folder Structure
 
-```
-.
-├── renderColections
-│   ├── README.md
-│   ├── db.json
-│   ├── eslint.config.js
-│   ├── index.html
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── src
-│   │   ├── App.jsx
-│   │   ├── App_2.01_courses.jsx
-│   │   ├── App_2.02_courses.jsx
-│   │   ├── App_2.04_courses.jsx
-│   │   ├── App_2.06_agenda.jsx
-│   │   ├── App_2.10_agenda.jsx
-│   │   ├── App_2.16_agenda.jsx
-│   │   ├── App_2.18_country_search.jsx
-│   │   ├── App_2.19_country_search.jsx
-│   │   ├── components
-│   │   │   ├── Country.jsx
-│   │   │   ├── CountryList.jsx
-│   │   │   ├── CountryList_2.19.jsx
-│   │   │   ├── Country_2.19.jsx
-│   │   │   ├── Course_2.01.jsx
-│   │   │   ├── Course_2.02.jsx
-│   │   │   ├── Course_2.04.jsx
-│   │   │   ├── Filter.jsx
-│   │   │   ├── Footer.jsx
-│   │   │   ├── Note.jsx
-│   │   │   ├── Notification.jsx
-│   │   │   ├── PersonForm.jsx
-│   │   │   └── PersonList.jsx
-│   │   ├── index.css
-│   │   ├── main.jsx
-│   │   └── services
-│   │       ├── notes.js
-│   │       ├── persons.js
-│   │       └── restcountries.js
-│   └── vite.config.js
-└── repasoJS.js
-```
+Following the course recommendations, the project is organized as follows:
 
-Cada archivo `App (notebook)`, `App_...(phonebook)`, `App_...(contry)` dentro de la carpeta `src` contiene ejercicios específicos de cada sección.
+```text
+├── index.js           # Only starts the server
+├── app.js             # The actual Express application
+├── controllers/       # Route handlers (Logic for each endpoint)
+├── models/            # Mongoose schemas and data models
+├── tests/             # Integration and unit tests
+├── utils/             # Config, logger, and custom middleware
+└── .env               # Environment variables (not tracked by Git)
+```
 
 ---
 
-## Cómo ejecutar los ejercicios
+## Technologies Used
 
-```
-1. Clonar este repositorio:
-git clone <url-del-repo>
+Node.js & Express
 
-2. Entrar a la carpeta:
-cd part2/phonebook
+MongoDB & Mongoose
 
-3. Instalar dependencias:
-npm install
+Bcrypt (Password hashing)
 
-4. Ejecutar la aplicación:
-npm run dev
-```
+Jsonwebtoken (JWT)
 
-> **Nota:** Para las secciones de la Agenda (Phonebook) a partir de la versión 2.16, se requiere que el servidor backend esté en ejecución para realizar las peticiones a la API.
+Supertest (API testing)
 
-## Tecnologías utilizadas
-
-React
-
-Vite
-
-Axios
-
-JavaScript ES6+
+ESLint (Code quality and styling)
