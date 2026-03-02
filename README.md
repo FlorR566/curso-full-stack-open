@@ -1,86 +1,66 @@
-# Full Stack Open – University of Helsinki
+# Full Stack Open – Part 4: Testing and User Administration
 
-This repository contains the solutions, exercises, and notes from the **Full Stack Open** course offered by the **University of Helsinki**.
-The course focuses on modern web development, primarily using **JavaScript**, **React**, **Node.js**, and current tools from the modern web ecosystem.
+This section of the repository focuses on the exercises and projects from **Part 4** of the Full Stack Open course by the **University of Helsinki**.
 
-## Topics Covered
+The main goal of this part is to transition from a basic backend to a production-grade application, emphasizing project structure, automated testing, and secure user management.
 
-Throughout the course, essential full stack development topics are addressed, including:
+## Key Topics Covered in Part 4
 
-### 🔹 **1. React and Frontend Fundamentals**
+In this section, I have refactored the backend and implemented advanced features:
 
-- Components
-- Props and state
-- Event handling
-- Conditional rendering
-- Lists and keys
-- Controlled forms
+### **1. Professional Project Structure**
 
-### 🔹 **2. Server Communication**
+- Separating the application into modules: `controllers`, `models`, `utils`, and `middleware`.
+- Creating a clear entry point (`index.js`) and a separate application logic file (`app.js`) to facilitate testing.
+- Extracting configuration and logging into dedicated utility modules.
 
-- HTTP requests
-- Promises and async/await
-- Axios and fetch
-- Basic error handling
+### **2. Backend Testing**
 
-### 🔹 **3. Backend with Node.js and Express**
+- Writing automated tests for the API using **Node's built-in test runner** (or **Jest**).
+- Using **Supertest** to test the API endpoints without running the server manually.
+- Implementing the "test-driven" mindset to ensure the database and routes work as expected.
+- Setting up a separate **testing database** to keep production/development data clean.
 
-- Building REST APIs
-- Routing
-- Middleware
-- Data handling
-- Validations
+### **3. User Administration**
 
-### 🔹 **4. Database Persistence**
+- Implementing user creation with secure password hashing using **bcrypt**.
+- Establishing relationships between data (e.g., linking notes or blogs to specific users).
+- Server-side validation for unique usernames and password strength.
 
-- MongoDB
-- Mongoose models
-- Full CRUD operations on the server side
+### **4. Token-Based Authentication**
 
-### 🔹 **5. Testing**
-
-- Component testing
-- API testing
-- Tools such as Jest and Supertest
-
-### 🔹 **6. Authentication, Authorization, and Security**
-
-- JWT tokens
-- Sessions
-- Security best practices
-
-### 🔹 **7. Deployment**
-
-- Deploying both frontend and backend
-- Production environments
+- Implementing **JSON Web Tokens (JWT)** for secure login.
+- Restricting API actions (like POST or DELETE) to authenticated users only.
+- Handling authorization logic through custom middleware.
 
 ---
 
-## Estructura del repositorio
+## 📂 Part 4 Folder Structure
 
-The repository is organized by **parts**, following the structure of the course:
+Following the course recommendations, the project is organized as follows:
 
-part0/
-part1/
-part2/
-...
-
-Each folder contains the corresponding exercises, along with personal notes and small projects developed in each section.
-
----
-
-## Objective
-
-The goal of this repository is to:
-
-- Consolidate my knowledge of modern web development
-- Work with technologies currently used in the industry
-- Practice good programming, testing, and deployment practices
-- Document my progress and learn in a more structured way
+```text
+├── index.js           # Only starts the server
+├── app.js             # The actual Express application
+├── controllers/       # Route handlers (Logic for each endpoint)
+├── models/            # Mongoose schemas and data models
+├── tests/             # Integration and unit tests
+├── utils/             # Config, logger, and custom middleware
+└── .env               # Environment variables (not tracked by Git)
+```
 
 ---
 
-## Original Course
+## Technologies Used
 
-University of Helsinki
-https://fullstackopen.com/
+Node.js & Express
+
+MongoDB & Mongoose
+
+Bcrypt (Password hashing)
+
+Jsonwebtoken (JWT)
+
+Supertest (API testing)
+
+ESLint (Code quality and styling)
